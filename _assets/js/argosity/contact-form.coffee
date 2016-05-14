@@ -22,9 +22,10 @@ class window.Argosity.ContactForm
         @containerSelector = container
         @container = document.querySelector(container)
         @bindElements() if @container
-        if link
+        @options = options
+        if @link
             new Argosity.ScrollLink(
-                link, @containerSelector
+                @link, @containerSelector
             )
 
     bindElements: ->
@@ -33,28 +34,26 @@ class window.Argosity.ContactForm
         @msgStatus = document.querySelector("#{@containerSelector} .message-status")
         @msgStatus.style.display = 'none'
 
-
-
     showFail: (msg) ->
         @msgStatus.classList?.add('alert-danger')
         @msgStatus.innerHTML = msg || FAILURE_MSG
 
-
     onSubmitComplete: (xhr) ->
+        @container.classList.remove('sending')
         if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304)
             msg = JSON.parse(xhr.responseText)
             if msg.success
                 @msgStatus.classList?.add('alert-success')
-                @msgStatus.innerHTML = SUCCESS_MSG
+                @msgStatus.innerHTML = @options.successMessage or SUCCESS_MSG
             else
                 @showFail(msg.message)
         else
             @showFail()
         @msgStatus.style.display = 'block'
 
-
     onSubmit: (ev) ->
         ev.preventDefault()
+        @container.classList.add('sending')
         data = {}
         form = ev.target
         for el in form.elements

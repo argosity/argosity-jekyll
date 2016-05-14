@@ -1,0 +1,50 @@
+@mixin argosity-contact-form {
+
+    .message-status {
+        display: none;
+        margin:10px auto;
+        font-size:2em;
+        line-height: 1.1em;
+        vertical-align:middle;
+        width: 80%;
+        max-width: 800px;
+        padding: 10px;
+        border-radius: 8px;
+        text-align: center;
+        &.alert-danger {
+            color: #D8000C;
+            background-color: #FFBABA;
+            border: 1px solid darken(#FFBABA, 50%);
+        }
+        &.alert-success {
+            color: #4F8A10;
+            background-color: #DFF2BF;
+            border: 1px solid darken(#DFF2BF, 50%);
+        }
+    }
+
+    &.sending {
+        form {
+            visibility: hidden;
+            position: relative;
+
+            &:before {
+                content: "Sending...";
+                display: block;
+                visibility: visible;
+                font-size: 28px;
+                position: absolute;
+                left: 50%;
+                top: 30%;
+
+                margin-left: -110px;
+                border: 1px solid;
+                padding: 20px;
+                border-radius: 8px;
+                text-align: center;
+                width: 220px;
+            }
+        }
+    }
+
+}
