@@ -23,9 +23,9 @@ class window.Argosity.ContactForm
         @container = document.querySelector(container)
         @bindElements() if @container
         @options = options
-        if @link
+        if link
             new Argosity.ScrollLink(
-                @link, @containerSelector
+                link, @containerSelector
             )
 
     bindElements: ->
