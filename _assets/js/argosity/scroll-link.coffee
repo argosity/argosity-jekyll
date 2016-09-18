@@ -14,21 +14,30 @@ POSITION = (start, end, elapsed, duration) ->
 
 class window.Argosity.ScrollLink
 
-    constructor: (link, destination, @options = {}) ->
-        @destination = document.querySelector(destination)
-        @link = document.querySelector(link)
+    constructor: (@link, @destination, @options = {}) ->
+        unless @destination instanceof Element
+            @destination = document.querySelector(@destination)
+        unless @link instanceof Element
+            @link = document.querySelector(@link)
         if @link and @destination
             @link.addEventListener 'click', => @scrollToElement()
 
     scrollToElement: ->
-        console.log 'st'
+        @constructor.scroll(@destination, @options.duration or DEFAULT_DURATION)
+
+    @scroll: (destination, duration = DEFAULT_DURATION) ->
+        unless destination instanceof Element
+            destination = document.querySelector(destination)
+
+        return false unless destination
+
         startPos  = window.pageYOffset
+
         endPos    =
-            @destination.getBoundingClientRect().top -
+            destination.getBoundingClientRect().top -
                 document.body.getBoundingClientRect().top
 
         startTime = Date.now()
-        duration  = @options.duration or DEFAULT_DURATION
 
         step = ->
             elapsed = Date.now() - startTime
