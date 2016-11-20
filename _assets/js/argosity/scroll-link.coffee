@@ -21,6 +21,8 @@ class window.Argosity.ScrollLink
             @link = document.querySelector(@link)
         if @link and @destination
             @link.addEventListener 'click', => @scrollToElement()
+        else
+            console?.warn "failed to setup link", @link, @destination
 
     scrollToElement: ->
         @constructor.scroll(@destination, @options.duration or DEFAULT_DURATION)
@@ -29,7 +31,9 @@ class window.Argosity.ScrollLink
         unless destination instanceof Element
             destination = document.querySelector(destination)
 
-        return false unless destination
+        unless destination
+            console?.warn "failed to scroll to", destination
+            return false
 
         startPos  = window.pageYOffset
 
