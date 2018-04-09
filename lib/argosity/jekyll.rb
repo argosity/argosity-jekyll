@@ -1,4 +1,5 @@
-require "argosity/jekyll/version"
+require_relative "jekyll/version"
+require_relative "jekyll/non_expired"
 
 module Argosity
   module Jekyll
