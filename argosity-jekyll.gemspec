@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["nathan@stitt.org"]
   spec.add_dependency 'jekyll-assets'
   spec.add_dependency 'coffee-script'
-
+  spec.add_dependency 'sprockets', '~> 4.0.beta8'
   spec.summary       = %q{utilities for writing jekyll websites}
   spec.description   = %q{utilities for writing jekyll websites}
   spec.homepage      = "https://github.com/argosity/argosity-jekyll"
