@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = Argosity::Jekyll::VERSION
   spec.authors       = ["Nathan Stitt"]
   spec.email         = ["nathan@stitt.org"]
-  spec.add_dependency 'jekyll-assets', '2.2.8'
+  spec.add_dependency 'jekyll-assets'
   spec.add_dependency 'coffee-script'
 
   spec.summary       = %q{utilities for writing jekyll websites}
