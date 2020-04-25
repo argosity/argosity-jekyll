@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["nathan@stitt.org"]
   spec.add_dependency 'jekyll-assets'
   spec.add_dependency 'coffee-script'
-  spec.add_dependency 'sprockets', '~> 4.0.beta8'
+  spec.add_dependency 'sprockets', '~> 4.0.0'
   spec.summary       = %q{utilities for writing jekyll websites}
   spec.description   = %q{utilities for writing jekyll websites}
   spec.homepage      = "https://github.com/argosity/argosity-jekyll"
@@ -29,6 +29,5 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency "bundler", "~> 1.11"
   spec.add_development_dependency "rake", "~> 10.0"
 end
